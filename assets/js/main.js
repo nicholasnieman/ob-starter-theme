@@ -5,7 +5,6 @@ jQuery(document).ready(function($){
   var slideUp = $(".slide-up");
   var slideIn = $(".slide-in");
   var fadeIn = $(".fade-in");
-  var sections = ['#hero-cta', '#about-us', '#what-we-do', '#our-designs'];
   var headerHeight = $('#masthead').height();
   var viewportHeight = $(window).height();
   var viewportWidth = $(window).width();
@@ -41,19 +40,6 @@ jQuery(document).ready(function($){
   $('#cta-section').animate({
     opacity: 1
   });
-
-  $('.design').on('click', function(event) {
-    var imgSrc = themeUrl.templateUrl +"/assets/img/" + $(this).attr('id') + ".jpg";
-    $('#design-modal-img').attr('src', imgSrc);
-    $('#design-modal').show();
-    $('body').css('overflow', 'hidden');
-  })
-
-  $('#design-modal-close-icon, #design-modal-background').on('click', function(event) {
-    $('#design-modal-img-container').scrollTop(0);
-    $('#design-modal').hide();
-    $('body').css('overflow', 'auto');
-  })
 
   $("a").on('click', function(event) {
     if (this.hash !== "") {
@@ -115,69 +101,7 @@ jQuery(document).ready(function($){
       } 
     });
 
-    if (viewportWidth > mobileBreakPoint) {
-
-      $(sections).each(function(i, el) {
-        var el = $(el);
-        navLink = "#" + el.attr('id') + "-link";
-        if (el.visible(true) && x < 1) {
-          $(navLink).css('color', '#8ae1ab');
-          x++;
-          } else {
-          $(navLink).css('color', '#ffffff');
-          x == 0;
-        }
-      });
-
-    }
-
   });
-
-  $('#service-slider').slick({
-    dots: true,
-    arrows:false,
-    infinite: true,
-    autoplay:true,
-    autoplaySpeed: 5000,
-    speed: 300,
-    centerMode: false,
-    swipeToSlide: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    mobileFirst:true,
-    swipe:true,
-    touchThreshold: 1000,
-    responsive: [
-      {
-        breakpoint: 700,
-        settings: "unslick"
-      }
-    ]
-  });    
-
-  if( viewportWidth <= 700) {
-    $('#design-grid').slick({
-      dots: true,
-      arrows:false,
-      infinite: true,
-      autoplay:true,
-      autoplaySpeed: 5000,
-      speed: 300,
-      centerMode: true,
-      swipeToSlide: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      mobileFirst:true,
-      swipe:true,
-      touchThreshold: 1000,
-      responsive: [
-        {
-          breakpoint: 700,
-          settings: "unslick"
-        }
-      ]
-    });
-  }
 
 });
 
